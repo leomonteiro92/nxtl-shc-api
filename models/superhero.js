@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.STRING,
             unique: true
+        },
+        protectionAreaId: {
+            allowNull: false,
+            field: 'protection_area_id',
+            type: DataTypes.INTEGER
         }
     }, {
         tableName: 'superheroes',
@@ -21,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
 
     Superhero.associate = (models) => {
         models.Superhero.hasOne(models.ProtectionArea, {
-            foreignKey: 'superhero_id'
+            as: 'protectionArea',
+            foreignKey: 'id'
         });
         models.Superhero.belongsToMany(models.Superpower, {
             as: 'superpowers',

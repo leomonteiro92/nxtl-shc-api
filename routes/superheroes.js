@@ -7,6 +7,7 @@ const {
 } = require('../controllers');
 
 router.get('/', superheroes.list);
+router.get('/nearby', superheroes.listNearby);
 router.get('/:id', superheroes.fetch);
 router.post('/', superheroes.create);
 router.put('/:id', superheroes.update);

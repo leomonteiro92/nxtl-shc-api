@@ -1,4 +1,6 @@
-const acl = require('../utils/acl');
+const {
+    acl
+} = require('../utils/acl');
 const db = require('../models');
 
 /**
@@ -40,17 +42,17 @@ module.exports.create = async (req, res) => {
         body
     } = req;
     try {
-        const data = await db.User.create(body);
+        const user = await db.User.create(body);
+        acl.addUserRoles(user.id, 'standard');
         return res.status(200).send({
-            data: data
+            data: 'User added successfully'
         });
     } catch (err) {
-        console.log(err);
         return res.status(400).send({
             error: err.message
         });
     }
-}
+};
 
 /**
  * 

@@ -18,6 +18,7 @@ app.oauth = new ExpressOAuthServer({
   model: require('./utils/oauth')
 });
 
+require('./utils/acl').middleware(app);
 require('./routes')(app);
 
 module.exports = app;

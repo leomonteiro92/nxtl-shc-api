@@ -17,7 +17,7 @@ module.exports = {
         },
         point: {
           allowNull: false,
-          type: Sequelize.GEOMETRY('POINT')
+          type: Sequelize.GEOMETRY('POINT', 4326)
         },
         radius: {
           allowNull: false,

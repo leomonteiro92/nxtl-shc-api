@@ -1,8 +1,3 @@
-const {
-    hashSync,
-    compareSync
-} = require('bcrypt');
-
 /**
  * 
  * @param {*} sequelize 
@@ -18,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         roleId: {
             allowNull: false,
             field: 'role_id',
-            type: DataTypes.STRING
+            type: DataTypes.INTEGER
         }
     }, {
         timestamps: false,

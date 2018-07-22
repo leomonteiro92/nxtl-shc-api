@@ -33,6 +33,7 @@ module.exports.getClient = async (clientId, clientSecret) => {
                 secret: clientSecret
             }
         });
+        console.log(client);
         if (!client) return;
         return {
             clientId: client.id,
@@ -94,7 +95,6 @@ module.exports.saveToken = async (token, client, user) => {
             userId: user.id
         });
         if (!OAuthToken) throw new Error('Unable to create OAuth Token');
-        console.log(await OAuthToken.getClient());
         return {
             accessToken: OAuthToken.accessToken,
             accessTokenExpiresAt: OAuthToken.accessTokenExpiresOn,

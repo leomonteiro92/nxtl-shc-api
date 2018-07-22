@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         point: {
             allowNull: false,
-            type: DataTypes.GEOMETRY('POINT')
+            type: DataTypes.GEOMETRY('POINT', 4326)
         },
         radius: {
             allowNull: false,
@@ -22,12 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'protection_areas',
         underscored: true
     });
-
-    ProtectionArea.associate = (models) => {
-        models.ProtectionArea.belongsTo(models.Superhero, {
-            onDelete: 'cascade'
-        });
-    };
 
     return ProtectionArea;
 };

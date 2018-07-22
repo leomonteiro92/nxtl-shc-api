@@ -15,5 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         underscored: true 
     });
 
+    Role.associate = (models) => {
+        models.Role.belongsToMany(models.User, {
+            as: 'users',
+            through: models.UserRole
+        });
+    };
+
     return Role;
 };

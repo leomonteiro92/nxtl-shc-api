@@ -1,30 +1,54 @@
 const ACL = require('acl');
-const acl = new ACL(new ACL.memoryBackend());
+const redis = require('redis');
+const acl = new ACL(new ACL.redisBackend(redis.createClient()));
 
 acl.allow([{
     roles: 'admin',
     allows: [{
-        resources: '/users',
+        resources: 'users',
         permissions: '*'
     }, {
-        resources: '/superheroes',
+        resources: 'superheroes',
         permissions: '*'
     }, {
-        resources: '/superpowers',
+        resources: 'superpowers',
         permissions: '*'
     }]
 }, {
     roles: 'standard',
     allows: [{
-        resources: '/users',
+        resources: 'users',
         permissions: 'get'
     }, {
-        resources: '/superheroes',
+        resources: 'superheroes',
         permissions: 'get'
     }, {
-        resources: '/superpowers',
+        resources: 'superpowers',
         permissions: 'get'
     }]
 }]);
 
-module.exports = acl;
+acl.addUserRoles(1, 'admin');
+
+module.exports.acl = acl;
+
+module.exports.middleware = app => {
+    app.acl = (req, res, next) => {
+        const user = res.locals.oauth.token.user;
+        const method = req.method.toLowerCase();
+        const resource = req.originalUrl.split('/')[3];
+        return acl.isAllowed(user.id, resource, method, (err, isAllowed) => {
+            if (err) {
+                return res.status(500).send({
+                    error: err.message
+                });
+            } else if (!isAllowed) {
+                return res.status(403).send({
+                    error: 'User has no access to this resource'
+                })
+            } else {
+                next();
+            }
+        });
+    }
+};
