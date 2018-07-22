@@ -30,7 +30,7 @@ module.exports.list = async (req, res) => {
             error: err.message
         });
     }
-}
+};
 
 /**
  * 
@@ -42,9 +42,10 @@ module.exports.create = async (req, res) => {
         body
     } = req;
     try {
+        if(!body.username) throw new Error('Missing attribute \'username\'');
         const user = await db.User.create(body);
         acl.addUserRoles(user.id, 'standard');
-        return res.status(200).send({
+        return res.status(201).send({
             data: 'User added successfully'
         });
     } catch (err) {
@@ -74,7 +75,7 @@ module.exports.update = async (req, res) => {
             error: err.message
         });
     }
-}
+};
 
 /**
  * 
@@ -120,4 +121,4 @@ module.exports.fetch = async (req, res) => {
             error: err.message
         });
     }
-}
+};

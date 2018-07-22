@@ -26,7 +26,7 @@ module.exports.list = async (req, res) => {
             error: err.message
         });
     }
-}
+};
 
 /**
  * 
@@ -38,16 +38,16 @@ module.exports.create = async (req, res) => {
         body
     } = req;
     try {
-        const data = await db.Superpower.create(body);
-        return res.status(200).send({
-            data: data
+        await db.Superpower.create(body);
+        return res.status(201).send({
+            data: 'Superpower added successfully'
         });
     } catch (err) {
         return res.status(400).send({
             error: err.message
         });
     }
-}
+};
 
 /**
  * 
@@ -69,7 +69,7 @@ module.exports.update = async (req, res) => {
             error: err.message
         });
     }
-}
+};
 
 /**
  * 
@@ -112,4 +112,4 @@ module.exports.fetch = async (req, res) => {
             error: err.message
         });
     }
-}
+};
