@@ -9,7 +9,7 @@ API to manage superheroes and their superpowers;
 
 ## Running Superheroes API
 ### 1) Ensure databases are running
-For convenience, you can run the databases using docker container. Ensure that the host ports are available:
+For convenience, you can run the databases using docker containers. Ensure that the host ports are available:
 ```bash
 docker-compose up -d
 ```
