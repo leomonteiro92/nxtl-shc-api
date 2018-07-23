@@ -18,7 +18,7 @@ To stop the databases:
 docker-compose up -d
 ```
 
-### 1) Install dependencies
+### 2) Install dependencies
 After cloning the repository, move to the main directory and run
 ```git
 npm install
@@ -28,8 +28,9 @@ In order to `bcrypt` be installed properly, make sure you have installed the SSL
 apt-get install libssl-dev
 ```
 
-### 2) Create the environment
+### 3) Create the environment
 Create a file `.env` and set the following variables:
+
 | Variable | Description |
 |----------|-------------|
 |DB_HOST|Database hostname. Ex.: `127.0.0.1`|
@@ -46,14 +47,14 @@ To run tests, use:
 npm test
 ```
 
-### 2) Start the application with PM2
+### 5) Start the application with PM2
 By default the application uses PM2 as process manager, just run (no additional build steps are required):
 Crie um arquivo `ecosystem.config.js` caso nÃ£o exista no diretÃ³rio da aplicaÃ§Ã£o: 
 ```bash
 npm start
 ```
 
-### 3) Stop the application
+### 6) Stop the application
 To stop the application just run:
 ```bash
 npm stop
