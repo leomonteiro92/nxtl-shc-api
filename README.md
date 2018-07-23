@@ -65,7 +65,6 @@ npm test
 
 ### 5) Start the application with PM2
 By default the application uses PM2 as process manager, just run (no additional build steps are required):
-Crie um arquivo `ecosystem.config.js` caso nÃ£o exista no diretÃ³rio da aplicaÃ§Ã£o: 
 ```bash
 npm start
 ```
