@@ -41,6 +41,22 @@ Create a file `.env` and set the following variables:
 |PORT| The default port which the application server listens. Default: `3000`|
 |NODE_ENV|Environment to run the application. Accepts `development`, `test` or `production`|
 
+Ex.:
+```bash
+export NODE_ENV=development
+export DB_HOST=127.0.0.1
+export DB_NAME=nxtl_shc_api_db
+export DB_USER=nxtl
+export DB_PASSWORD=nxtl
+export DB_PORT=5432
+export PORT=3000
+```
+
+After the enviroment is set, run:
+```bash
+source .env
+```
+
 ### 4) Run the tests
 To run tests, use:
 ```bash
