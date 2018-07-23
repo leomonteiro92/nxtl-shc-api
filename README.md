@@ -15,7 +15,7 @@ docker-compose up -d
 ```
 To stop the databases:
 ```bash
-docker-compose up -d
+docker-compose stop
 ```
 
 ### 2) Install dependencies
